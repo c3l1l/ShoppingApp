@@ -14,6 +14,10 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'baskets',
+    loadChildren: () => import('./baskets/baskets.module').then( m => m.BasketsPageModule)
+  },
 
 ];
 

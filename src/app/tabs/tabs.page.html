@@ -8,7 +8,7 @@
     </ion-tab-button>
     <ion-tab-button tab="/tabs/baskets">
       <ion-icon name="cart-outline"></ion-icon>
-      <ion-label>Sepet</ion-label>
+      <ion-label>Sepet <strong> {{total | currency: 'TRY':'symbol-narrow':'1.2-2'}}</strong></ion-label>
     </ion-tab-button>
     <ion-tab-button tab="/tabs/orders">
       <ion-icon name="bag-remove-outline"></ion-icon>
