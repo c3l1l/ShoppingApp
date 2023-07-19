@@ -5,28 +5,41 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
- <ion-card>
-  <ion-card-header class="ion-text-center">
-    <ion-card-subtitle>Toplam Tutar</ion-card-subtitle>
-    <ion-card-title>
-      {{total | currency:'TRY':'symbol-narrow':'1.2-2'}}
-    </ion-card-title>
-    <ion-button expand="block">Odeme Yap</ion-button>
-  </ion-card-header>
-  <ion-card-content>
-    <ion-card>
-      <ion-card-header>
-        <ion-title></ion-title>
-      </ion-card-header>
-    </ion-card>
-    <ion-list>
+  <ion-card>
+    <ion-card-header class="ion-text-center">
+      <ion-card-subtitle>Toplam Tutar</ion-card-subtitle>
+      <ion-card-title>
+        {{total | currency:'TRY':'symbol-narrow':'1.2-2'}}
+      </ion-card-title>
+      <ion-button expand="block">Odeme Yap</ion-button>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card *ngFor="let basket of baskets let index=index">
+
+        <ion-card-content class="ion-text-center">
+          <ion-label>
+            {{index+1}}. {{basket.product.name}} {{basket.quantity}} adet {{basket.product.price |
+            currency:'TRY':'symbol-narrow':'1.2-2'}}
+          </ion-label>
+
+        </ion-card-content>
+        <ion-card-header class="ion-text-center">
+          <ion-card-title color="danger">
+            {{ (basket.product.price * basket.quantity) | currency:'TRY':'symbol-narrow':'1.2-2'}}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-button expand="block" color="danger">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-card>
+      <!-- <ion-list>
       <ion-item *ngFor="let basket of baskets let index=index">
           <ion-label>
             {{index+1}}. {{basket.product.name}} {{basket.quantity}} adet  {{basket.product.price | currency:'TRY':'symbol-narrow':'1.2-2'}}
             = {{ (basket.product.price * basket.quantity) | currency:'TRY':'symbol-narrow':'1.2-2'}}
           </ion-label>
       </ion-item>
-    </ion-list>
-  </ion-card-content>
- </ion-card>
+    </ion-list> -->
+    </ion-card-content>
+  </ion-card>
 </ion-content>
