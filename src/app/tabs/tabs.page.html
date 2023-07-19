@@ -1,18 +1,24 @@
 <ion-tabs>
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="products">
+    <ion-tab-button tab="products" *ngIf="isAuthenticated">
       <ion-icon name="bag-add-outline"></ion-icon>
       <ion-label>
         Urunler
        </ion-label>
     </ion-tab-button>
-    <ion-tab-button tab="baskets">
+    <ion-tab-button tab="baskets" *ngIf="!isAuthenticated">
       <ion-icon name="cart-outline"></ion-icon>
       <ion-label>Sepet <strong> {{total | currency: 'TRY':'symbol-narrow':'1.2-2'}}</strong></ion-label>
     </ion-tab-button>
-    <ion-tab-button tab="orders">
+    <ion-tab-button tab="orders" *ngIf="!isAuthenticated">
       <ion-icon name="bag-remove-outline"></ion-icon>
       <ion-label>Siparisler</ion-label>
+    </ion-tab-button>
+    <ion-tab-button  (click)="logout()" *ngIf="isAuthenticated">
+      <ion-icon color="danger" name="log-out-outline"></ion-icon>
+      <ion-label color="danger">
+        Cikis Yap
+      </ion-label>
     </ion-tab-button>
   </ion-tab-bar>
  </ion-tabs>
