@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ProductsPageRoutingModule } from './products-routing.module';
 
 import { ProductsPage } from './products.page';
+import { ProductPipe } from './pipes/product.pipe';
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import { ProductsPage } from './products.page';
     IonicModule,
     ProductsPageRoutingModule
   ],
-  declarations: [ProductsPage],
+  declarations: [ProductsPage, ProductPipe],
   providers:[
 
   ]

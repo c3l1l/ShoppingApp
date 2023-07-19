@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from './services/product.service';
 import { ProductModel } from './models/product-model';
 import { ErrorService } from '../services/error.service';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { LoadingController, ToastController, ViewDidEnter } from '@ionic/angular';
 import { BasketService } from '../baskets/services/basket.service';
 import { BasketModel } from '../baskets/models/basket-model';
 
@@ -11,15 +11,17 @@ import { BasketModel } from '../baskets/models/basket-model';
   templateUrl: './products.page.html',
   styleUrls: ['./products.page.scss'],
 })
-export class ProductsPage implements OnInit {
+export class ProductsPage implements ViewDidEnter {
+  filterText:string="";
   products:ProductModel[]=[];
   quantity:number=1;
   loading:any;
   constructor(private productService:ProductService,private errService:ErrorService,private toastController:ToastController,private basketService:BasketService,private loadingController:LoadingController) { }
-
-  ngOnInit() {
+  ionViewDidEnter(): void {
     this.getList();
   }
+
+
   getList(){
     this.presentLoading();
     this.productService.getList().subscribe((res:any)=>{
@@ -85,8 +87,8 @@ export class ProductsPage implements OnInit {
     await this.loading.present();
 
   }
-   dismissLoading(){
-    this.loading.dismiss();
+   async dismissLoading(){
+   return this.loading.dismiss();
   }
 
 }
