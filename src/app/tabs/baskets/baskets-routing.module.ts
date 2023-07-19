@@ -6,8 +6,14 @@ import { BasketsPage } from './baskets.page';
 const routes: Routes = [
   {
     path: '',
-    component: BasketsPage
+    component: BasketsPage,
+
+  },
+  {
+    path: 'payment',
+    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
   }
+
 ];
 
 @NgModule({

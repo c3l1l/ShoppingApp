@@ -1,22 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, OnInit } from '@angular/core';
 import { ProductService } from './services/product.service';
 import { ProductModel } from './models/product-model';
 import { ErrorService } from '../services/error.service';
-import { LoadingController, ToastController, ViewDidEnter } from '@ionic/angular';
+import { LoadingController, MenuController, ToastController, ViewDidEnter } from '@ionic/angular';
 import { BasketService } from '../baskets/services/basket.service';
 import { BasketModel } from '../baskets/models/basket-model';
+import { AuthService } from '../auth/services/auth.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.page.html',
   styleUrls: ['./products.page.scss'],
 })
-export class ProductsPage implements ViewDidEnter {
+export class ProductsPage implements ViewDidEnter,AfterContentChecked {
+  isAuthenticated=false;
   filterText:string="";
   products:ProductModel[]=[];
   quantity:number=1;
   loading:any;
-  constructor(private productService:ProductService,private errService:ErrorService,private toastController:ToastController,private basketService:BasketService,private loadingController:LoadingController) { }
+  constructor(private productService:ProductService,private errService:ErrorService,private toastController:ToastController,private basketService:BasketService,private loadingController:LoadingController,private menu:MenuController,private authService:AuthService) { }
+  ngAfterContentChecked(): void {
+this.isAuthenticated=this.authService.isAuthenticated();  }
   ionViewDidEnter(): void {
     this.getList();
   }
@@ -90,5 +94,8 @@ export class ProductsPage implements ViewDidEnter {
    async dismissLoading(){
    return this.loading.dismiss();
   }
+
+
+
 
 }

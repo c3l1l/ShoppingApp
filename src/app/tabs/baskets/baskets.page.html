@@ -1,5 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-menu-button slot="start"></ion-menu-button>
     <ion-title>Sepet</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,7 +12,7 @@
       <ion-card-title>
         {{total | currency:'TRY':'symbol-narrow':'1.2-2'}}
       </ion-card-title>
-      <ion-button expand="block" *ngIf="baskets.length > 0">Odeme Yap</ion-button>
+      <ion-button expand="block" *ngIf="baskets.length > 0" routerLink="/tabs/baskets/payment">Odeme Yap</ion-button>
     </ion-card-header>
     <ion-card-content *ngIf="baskets.length > 0">
       <ion-card *ngFor="let basket of baskets let index=index" >

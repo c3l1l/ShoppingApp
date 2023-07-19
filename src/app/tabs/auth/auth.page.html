@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Giris Sayfasi</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label position="floating">
+        Mail Adresi
+    </ion-label>
+    <ion-input [(ngModel)]="email"> </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">
+        Sifre
+    </ion-label>
+    <ion-input type="password" [(ngModel)]="password"> </ion-input>
+  </ion-item>
+  <ion-button expand="block" (click)="login()">
+    <ion-icon name="log-in-outline"></ion-icon>
+    Giris Yap
+  </ion-button>
+</ion-content>

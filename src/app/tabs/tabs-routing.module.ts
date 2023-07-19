@@ -18,10 +18,19 @@ const routes: Routes = [
       },
       {
         path: 'baskets',
-        loadChildren: () => import('./baskets/baskets.module').then( m => m.BasketsPageModule)
-      }
+        loadChildren: () => import('./baskets/baskets.module').then( m => m.BasketsPageModule),
+
+      },
+      {path:'basket/payment',
+      loadChildren:()=>import('./baskets/payment/payment.module').then(m=>m.PaymentPageModule)
+    },
+    {
+      path: 'auth',
+      loadChildren: () => import('./auth/auth.module').then( m => m.AuthPageModule)
+    },
     ]
-  },
+  }
+
 
 
 ];
