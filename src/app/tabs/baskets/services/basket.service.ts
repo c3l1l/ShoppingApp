@@ -17,7 +17,11 @@ export class BasketService {
     const api=this.apiUrl+'baskets/add';
     return this.httpClient.post(api,basketModel);
   }
+  deleteBasket(basketModel:BasketModel){
+    const api=this.apiUrl+'baskets/delete';
+    return this.httpClient.post(api,basketModel);
+  }
 
-  
+
 }
 

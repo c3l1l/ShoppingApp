@@ -11,10 +11,10 @@
       <ion-card-title>
         {{total | currency:'TRY':'symbol-narrow':'1.2-2'}}
       </ion-card-title>
-      <ion-button expand="block">Odeme Yap</ion-button>
+      <ion-button expand="block" *ngIf="baskets.length > 0">Odeme Yap</ion-button>
     </ion-card-header>
-    <ion-card-content>
-      <ion-card *ngFor="let basket of baskets let index=index">
+    <ion-card-content *ngIf="baskets.length > 0">
+      <ion-card *ngFor="let basket of baskets let index=index" >
 
         <ion-card-content class="ion-text-center">
           <ion-label>
@@ -28,7 +28,7 @@
             {{ (basket.product.price * basket.quantity) | currency:'TRY':'symbol-narrow':'1.2-2'}}
           </ion-card-title>
         </ion-card-header>
-        <ion-button expand="block" color="danger">
+        <ion-button expand="block" color="danger" (click)="presentDeleteConfirm(basket)">
           <ion-icon name="trash-outline"></ion-icon>
         </ion-button>
       </ion-card>
@@ -40,6 +40,9 @@
           </ion-label>
       </ion-item>
     </ion-list> -->
+    </ion-card-content>
+    <ion-card-content *ngIf="baskets.length < 1">
+      <h2 class="ion-text-center" style="color:red">Sepette Urun yok</h2>
     </ion-card-content>
   </ion-card>
 </ion-content>
